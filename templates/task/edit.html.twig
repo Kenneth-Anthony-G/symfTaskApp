@@ -1,0 +1,23 @@
+{% extends 'layout/base.html.twig' %}
+
+{% block title %}Modifier la Tâche{% endblock %}
+
+{% block content %}
+    <div class="container mx-auto p-4">
+        <h1 class="text-2xl font-bold mb-4">Modifier la Tâche</h1>
+
+        {{ form_start(form, {'attr': {'class': 'space-y-4'}}) }}
+        <div class="space-y-4">
+            {{ form_row(form.title, {'attr': {'class': 'border border-gray-300 rounded-md p-2 focus:ring-blue-500 focus:border-blue-500 w-full'}}) }}
+            {{ form_row(form.description, {'attr': {'class': 'border border-gray-300 rounded-md p-2 focus:ring-blue-500 focus:border-blue-500 w-full'}}) }}
+        </div>
+        <div class="flex justify-end mt-4">
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Modifier</button>
+        </div>
+        {{ form_end(form) }}
+
+        <div class="mt-4">
+            <a href="{{ path('task_list') }}" class="text-blue-500 hover:underline">Retour à la liste</a>
+        </div>
+    </div>
+{% endblock %}

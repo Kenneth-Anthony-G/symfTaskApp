@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Ma Super Application{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+<body>
+{% include 'layout/app_bar.html.twig' %}
+
+<main>
+    {% block content %}
+        <!-- Contenu spécifique aux pages sera injecté ici -->
+    {% endblock %}
+</main>
+</body>
+</html>

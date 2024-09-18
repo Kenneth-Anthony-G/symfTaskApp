@@ -1,0 +1,38 @@
+{% extends 'layout/base.html.twig' %}
+
+{% block title %}Liste des Tâches{% endblock %}
+
+{% block content %}
+    <div class="container mx-auto p-4">
+        <h1 class="text-2xl font-bold mb-4">Liste des Tâches</h1>
+        <a href="{{ path('task_new') }}" class="bg-blue-500 text-white px-4 py-2 rounded">Créer une nouvelle tâche</a>
+        <table class="min-w-full mt-4 bg-white border border-gray-300">
+            <thead>
+            <tr class="text-center">
+                <th class="py-2 px-4 border-b">id</th>
+                <th class="py-2 px-4 border-b">titre</th>
+                <th class="py-2 px-4 border-b">description</th>
+                <th class="py-2 px-4 border-b">Modifier</th>
+                <th class="py-2 px-4 border-b">Supprimer</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for task in tasks %}
+                <tr class="text-center">
+                    <td class="py-2 px-4 border-b">{{ task.id }}</td>
+                    <td class="py-2 px-4 border-b">{{ task.title }}</td>
+                    <td class="py-2 px-4 border-b">{{ task.description }}</td>
+                    <td class="py-2 px-4 border-b"><a href="{{ path('task_edit', {id: task.id}) }}" class="text-blue-500">Modifier</a></td>
+                    <td class="py-2 px-4 border-b">
+                        <form method="post" action="{{ path('task_delete', {id: task.id}) }}"
+                              onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette tâche ?');">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ task.id) }}">
+                            <button type="submit" class="bg-red-500 text-white px-2 py-1 rounded">Supprimer</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

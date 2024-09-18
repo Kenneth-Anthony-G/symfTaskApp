@@ -1,0 +1,23 @@
+{% extends 'layout/base.html.twig' %}
+
+{% block title %}Créer une Tâche{% endblock %}
+
+{% block content %}
+    <div class="container mx-auto p-6 max-w-lg">
+        <h1 class="text-3xl font-bold mb-6">Créer une Tâche</h1>
+
+        {{ form_start(form, {'attr': {'class': 'space-y-6'}}) }}
+        <div class="space-y-4">
+            {{ form_row(form.title, {'attr': {'class': 'border border-gray-300 rounded-md p-2 focus:ring-blue-500 focus:border-blue-500 w-full'}}) }}
+            {{ form_row(form.description, {'attr': {'class': 'border border-gray-300 rounded-md p-2 focus:ring-blue-500 focus:border-blue-500 w-full'}}) }}
+        </div>
+        <div class="flex justify-end mt-4">
+            <button type="submit" class="bg-blue-500 text-white px-6 py-3 rounded shadow-md hover:bg-blue-600 transition duration-300">Créer</button>
+        </div>
+        {{ form_end(form) }}
+
+        <div class="mt-6">
+            <a href="{{ path('task_list') }}" class="text-blue-500 hover:underline text-lg">Retour à la liste</a>
+        </div>
+    </div>
+{% endblock %}
